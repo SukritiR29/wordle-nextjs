@@ -17,7 +17,7 @@ export default observer(function Home() {
 
   return ( 
   <div className="flex h-screen w-screen items-center justify-center flex-col bg-zinc-400 ">
-    <h1 className="text-6xl font-bold uppercasr text-transparent bg-clip-text bg-gradient-to-br from-red-800 to-red-800 mb-5">
+    <h1 className="text-6xl font-bold uppercasr text-transparent bg-clip-text bg-gradient-to-br from-blue-800 to-blue-800 mb-5">
       Wordle
       </h1>
      {store.guesses.map((_,i) => (
@@ -28,11 +28,13 @@ export default observer(function Home() {
       isGuessed={i < store.currentGuess}
       />
     ))}
+    {store.won && <h1>You won!</h1>}
+    {store.lost && <h1>You lost!</h1>}
+    {(store.won || store.lost) && (
+       <button onClick={store.init}>Play Again</button>
+    )}
+    <Querty store={store} />
     
-    <h1>won/loss</h1>
-    <Querty/>
-    word: {store.word}
-    guesses: {JSON.stringify(store.guesses)}
   </div>
   )
 })
