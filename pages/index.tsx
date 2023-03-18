@@ -1,8 +1,10 @@
+//@ts-nocheck
 import { observer, useLocalObservable } from "mobx-react-lite";
 import Querty from "../components/Qwerty";
 import Guess from "../components/Guess";
 import PuzzleStore from "../stores/PuzzleStore";
 import { useEffect } from "react";
+// @ts-nocheck  
 
 export default observer(function Home() {
   const store = useLocalObservable(() => PuzzleStore)
@@ -33,7 +35,8 @@ export default observer(function Home() {
     {(store.won || store.lost) && (
        <button onClick={store.init}>Play Again</button>
     )}
-    <Querty store={store} />
+    
+    <Querty store ={store} />
     
   </div>
   )
