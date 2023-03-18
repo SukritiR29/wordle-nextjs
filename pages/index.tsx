@@ -20,12 +20,12 @@ export default observer(function Home() {
     <h1 className="text-6xl font-bold uppercasr text-transparent bg-clip-text bg-gradient-to-br from-red-800 to-red-800 mb-5">
       Wordle
       </h1>
-     {new Array(6).fill(0).map((_,i) => (
+     {store.guesses.map((_,i) => (
       <Guess 
       key={i}
       word={store.word}
       guess={store.guesses[i]} 
-      isGuessed={i < store.currentGuesses}
+      isGuessed={i < store.currentGuess}
       />
     ))}
     
