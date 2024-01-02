@@ -4,6 +4,7 @@ export default {
   word: '',
   guesses: [],
   currentGuess: 0,
+  
   get won() {
     return this.guesses[this.currentGuess - 1] === this.word
   },
