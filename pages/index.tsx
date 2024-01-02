@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { observer, useLocalObservable } from "mobx-react-lite";
-import Querty from "../components/Qwerty";
+import Querty from "../components/keyboard";
 import Guess from "../components/Guess";
 import PuzzleStore from "../stores/PuzzleStore";
 import { useEffect } from "react";
@@ -18,10 +18,13 @@ export default observer(function Home() {
   }, [])
 
   return ( 
-  <div className="flex h-screen w-screen items-center justify-center flex-col bg-zinc-400 ">
-    <h1 className="text-6xl font-bold uppercasr text-transparent bg-clip-text bg-gradient-to-br from-blue-800 to-blue-800 mb-5">
-      Wordle
+  <div className="flex h-screen w-screen items-center justify-center flex-col bg-amber-50 ">
+    <nav className="bg-yellow-100 w-screen mt flex justify-center items-center mb-5 border-b bordered-black ">
+    <h1 className="text-4xl font-bold mt-2 mb-2">
+      WORDLE
       </h1>
+    </nav>
+   
      {store.guesses.map((_,i) => (
       <Guess 
       key={i}
@@ -30,13 +33,15 @@ export default observer(function Home() {
       isGuessed={i < store.currentGuess}
       />
     ))}
-    {store.won && <h1>You won!</h1>}
-    {store.lost && <h1>You lost!</h1>}
+    {store.won && <h1 className="bg-green p-2 rounded">You won!</h1>}
+    {store.lost && <h1>You lost!</h1> && <h2>COrrect word was:</h2>}
     {(store.won || store.lost) && (
        <button onClick={store.init}>Play Again</button>
     )}
-    
+    <div>
     <Querty store ={store} />
+    </div>
+   
     
   </div>
   )
