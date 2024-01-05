@@ -34,9 +34,9 @@ export default observer(function Home() {
       />
     ))}
     {store.won && <h1 className="bg-green p-2 rounded">You won!</h1>}
-    {store.lost && <h1>You lost!</h1> && <h2>COrrect word was:</h2>}
+    {store.lost && <h1 className="items justify-center items-center text-center">You lost! <br /> Correct word was: {store.word} </h1>}
     {(store.won || store.lost) && (
-       <button onClick={store.init}>Play Again</button>
+       <button onClick={store.init} className="btn bg-cyan-600 text-slate-50 p-2 rounded mb-2 mt-2">Play Again</button>
     )}
     <div>
     <Querty store ={store} />
